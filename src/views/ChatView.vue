@@ -14,6 +14,9 @@ import ChatList from "@/components/ChatList.vue";
 .chat-container {
   display: flex;
   background-color: white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
   height: 100vh;
 }
 </style>

@@ -1,26 +1,34 @@
 <template>
-  <div class="chat">
-    <div class="chat__messages">
-      <time class="chat__date">Сегодня</time>
-      <app-message></app-message>
+  <!-- scrollbar customization -->
+  <div class="scroll-container" ref="scrollContainer">
+    <div class="chat">
+      <div class="chat__messages">
+        <div class="chat__date">Сегодня</div>
+        <app-message></app-message>
+      </div>
+      <app-chat-input class="chat__input"></app-chat-input>
     </div>
-    <app-chat-input class="chat__input"></app-chat-input>
   </div>
 </template>
 
 <script setup>
 import AppMessage from "@/components/UI/AppMessage.vue";
 import AppChatInput from "./UI/AppMessageInput.vue";
+import { usePerfectScrollbar } from "@/composables/usePerfectScrollbar";
+
+const { scrollContainer } = usePerfectScrollbar();
 </script>
 
 <style lang="scss" scoped>
+.scroll-container {
+  position: relative;
+  overflow: hidden;
+}
 .chat {
   display: flex;
   flex-direction: column;
-  height: 100vh;
   background-color: $iceberg-blue;
   padding: 0 25px;
-  overflow: auto;
 
   .chat__messages {
     flex-grow: 1;
@@ -39,14 +47,14 @@ import AppChatInput from "./UI/AppMessageInput.vue";
     margin-bottom: 20px;
   }
 
-  .chat__input {
-    display: flex;
-    padding-bottom: 20px;
-    justify-content: center;
-    position: sticky;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
+  // .chat__input {
+  //   display: flex;
+  //   padding-bottom: 20px;
+  //   justify-content: center;
+  //   position: sticky;
+  //   bottom: 0;
+  //   left: 0;
+  //   right: 0;
+  // }
 }
 </style>

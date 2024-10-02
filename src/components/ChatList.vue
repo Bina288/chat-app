@@ -12,7 +12,8 @@ import ChatListItems from "./ChatListItems.vue";
 
 <style lang="scss" scoped>
 .chat-list {
-  width: 30%;
+  min-width: 70px;
+  max-width: 400px;
   transition: width 0.2s ease;
   display: flex;
   flex-direction: column;

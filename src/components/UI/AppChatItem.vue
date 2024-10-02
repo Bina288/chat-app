@@ -49,6 +49,114 @@
       </div>
     </div>
   </article>
+  <article class="chat-item">
+    <div class="chat-item__avatar avatar"></div>
+    <div class="chat-item__wrapper">
+      <header class="chat-item__info">
+        <h4 class="chat-item__title">Чат 4</h4>
+        <time class="chat-item__time grey-text" datetime="2023-09-27T18:30"
+          >18:30</time
+        >
+      </header>
+      <div class="chat-item__content">
+        <p class="chat-item__message grey-text">
+          Ut vitae eleifend est. Integer molestie magna ex, sit amet maximus
+          orci iaculis eu.
+        </p>
+        <div class="chat-item__unread-count">2</div>
+      </div>
+    </div>
+  </article>
+  <article class="chat-item">
+    <div class="chat-item__avatar avatar"></div>
+    <div class="chat-item__wrapper">
+      <header class="chat-item__info">
+        <h4 class="chat-item__title">Чат 5</h4>
+        <time class="chat-item__time grey-text" datetime="2023-09-27T18:30"
+          >18:30</time
+        >
+      </header>
+      <div class="chat-item__content">
+        <p class="chat-item__message grey-text">
+          Ut vitae eleifend est. Integer molestie magna ex, sit amet maximus
+          orci iaculis eu.
+        </p>
+        <div class="chat-item__unread-count">2</div>
+      </div>
+    </div>
+  </article>
+  <article class="chat-item">
+    <div class="chat-item__avatar avatar"></div>
+    <div class="chat-item__wrapper">
+      <header class="chat-item__info">
+        <h4 class="chat-item__title">Чат 6</h4>
+        <time class="chat-item__time grey-text" datetime="2023-09-27T18:30"
+          >18:30</time
+        >
+      </header>
+      <div class="chat-item__content">
+        <p class="chat-item__message grey-text">
+          Ut vitae eleifend est. Integer molestie magna ex, sit amet maximus
+          orci iaculis eu.
+        </p>
+        <div class="chat-item__unread-count">2</div>
+      </div>
+    </div>
+  </article>
+  <article class="chat-item">
+    <div class="chat-item__avatar avatar"></div>
+    <div class="chat-item__wrapper">
+      <header class="chat-item__info">
+        <h4 class="chat-item__title">Чат 7</h4>
+        <time class="chat-item__time grey-text" datetime="2023-09-27T18:30"
+          >18:30</time
+        >
+      </header>
+      <div class="chat-item__content">
+        <p class="chat-item__message grey-text">
+          Ut vitae eleifend est. Integer molestie magna ex, sit amet maximus
+          orci iaculis eu.
+        </p>
+        <div class="chat-item__unread-count">2</div>
+      </div>
+    </div>
+  </article>
+  <article class="chat-item">
+    <div class="chat-item__avatar avatar"></div>
+    <div class="chat-item__wrapper">
+      <header class="chat-item__info">
+        <h4 class="chat-item__title">Чат 8</h4>
+        <time class="chat-item__time grey-text" datetime="2023-09-27T18:30"
+          >18:30</time
+        >
+      </header>
+      <div class="chat-item__content">
+        <p class="chat-item__message grey-text">
+          Ut vitae eleifend est. Integer molestie magna ex, sit amet maximus
+          orci iaculis eu.
+        </p>
+        <div class="chat-item__unread-count">2</div>
+      </div>
+    </div>
+  </article>
+  <article class="chat-item">
+    <div class="chat-item__avatar avatar"></div>
+    <div class="chat-item__wrapper">
+      <header class="chat-item__info">
+        <h4 class="chat-item__title">Чат 9</h4>
+        <time class="chat-item__time grey-text" datetime="2023-09-27T18:30"
+          >18:30</time
+        >
+      </header>
+      <div class="chat-item__content">
+        <p class="chat-item__message grey-text">
+          Ut vitae eleifend est. Integer molestie magna ex, sit amet maximus
+          orci iaculis eu.
+        </p>
+        <div class="chat-item__unread-count">2</div>
+      </div>
+    </div>
+  </article>
 </template>
 
 <script setup>

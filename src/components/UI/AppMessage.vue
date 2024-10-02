@@ -1,6 +1,38 @@
 <template>
   <div class="message message--sent">
     <div class="message__content">
+      <p class="message__text">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vehicula
+        ac nulla id egestas. Nulla eu sodales odio. Ut vitae eleifend est.
+        Integer molestie magna ex, sit amet maximus orci iaculis eu.
+      </p>
+      <time class="message__time" datetime="2024-09-27T16:14"
+        >16:14
+        <img
+          class="message__received-mark-icon"
+          src="..\icons\mark-black-icon.svg"
+          alt="Received message Mark Icon"
+      /></time>
+    </div>
+  </div>
+  <div class="message message--received">
+    <div class="message__content">
+      <p class="message__text">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vehicula
+        ac nulla id egestas. Nulla eu sodales odio. Ut vitae eleifend est.
+        Integer molestie magna ex, sit amet maximus orci iaculis eu.
+      </p>
+      <time class="message__time" datetime="2024-09-27T17:14"
+        >17:14
+        <img
+          class="message__received-mark-icon"
+          src="..\icons\mark-black-icon.svg"
+          alt="Received message Mark Icon"
+      /></time>
+    </div>
+  </div>
+  <div class="message message--sent">
+    <div class="message__content">
       <p class="message__text">Привет, все работает</p>
       <time class="message__time" datetime="2024-09-27T18:16"
         >18:16
