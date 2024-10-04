@@ -3,7 +3,7 @@
     <button class="menu-btn">
       <img class="icon" src="./icons/menu-icon.svg" alt="Chats Menu" />
     </button>
-    <div class="search-form">
+    <div class="search-form" v-show="!isCollapsed">
       <button class="search-btn">
         <img
           class="search-icon icon"
@@ -17,13 +17,21 @@
 </template>
 
 <script setup>
+import { defineProps } from "vue";
+
+const props = defineProps({
+  isCollapsed: {
+    type: Boolean,
+    required: true,
+  },
+});
 </script>
 
 <style lang="scss" scoped>
 .search-bar {
   display: flex;
   align-items: center;
-  padding: 10px;
+  padding: 10px 15px;
   justify-content: space-between;
   gap: 20px;
 }
