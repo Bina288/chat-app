@@ -1,6 +1,6 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 
-export function useChatToggle(minChatWidthPx = 75, maxChatWidthPercent = 60) {
+export function useListToggle(minChatWidthPx = 75, maxChatWidthPercent = 60) {
   const isCollapsed = ref(false);
   let startX = 0;
 
