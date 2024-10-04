@@ -12,7 +12,7 @@
 <script setup>
 import ChatListHeader from "./ChatListHeader.vue";
 import ChatListItems from "./ChatListItems.vue";
-import { useListToggle } from "@/composables/useListToggle.vue";
+import { useListToggle } from "@/composables/useListToggle";
 const { isCollapsed, chatListWidthCSS, onMouseDown } = useListToggle();
 </script>
 
