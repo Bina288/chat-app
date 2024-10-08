@@ -1,5 +1,5 @@
 export class Message {
-  constructor(text, timestamp, hasRead = false) {
+  constructor(id, chatId, text, timestamp, hasRead = false) {
     this.id = id;
     this.chatId = chatId;
     this.text = text;
@@ -10,14 +10,9 @@ export class Message {
 }
 
 export class Chat {
-  constructor(id, name, lastVisited = '', messages = []) {
+  constructor(id, name, lastVisited = '') {
     this.id = id,
     this.name = name;
     this.lastVisited = lastVisited;
-    //this.messages = messages;
-  }
-
-  getUnreadCount() {
-    return this.messages.filter(message => !message.hasRead).length;
   }
 }

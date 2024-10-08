@@ -3,11 +3,11 @@ import './assets/main.scss'
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import { useStore } from "vuex";
+import store from './store';
 
 
 const app = createApp(App)
 
-app.use(router).use(useStore)
+app.use(router).use(store)
 
 app.mount('#app')
