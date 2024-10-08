@@ -28,7 +28,8 @@
 <style lang="scss" scoped>
 .input-container {
   display: flex;
-  padding: 10px;
+  padding-top: 10px;
+  padding-bottom: 20px;
   justify-content: center;
   position: sticky;
   bottom: 0;

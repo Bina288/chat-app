@@ -14,5 +14,7 @@ import ChatDialogMessages from "./ChatDialogMessages.vue";
 .chat-dialog {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  height: 100vh;
 }
 </style>

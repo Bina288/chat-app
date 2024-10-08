@@ -4,14 +4,13 @@
     <div class="chat">
       <div class="chat__messages">
         <div class="chat__date">Сегодня</div>
-        <div>
-          <app-message
-            v-for="(message, index) in messages"
-            :key="message.id"
-            :message="message"
-            :messageIndex="index"
-          ></app-message>
-        </div>
+
+        <app-message
+          v-for="(message, index) in messages"
+          :key="message.id"
+          :message="message"
+          :messageIndex="index"
+        ></app-message>
       </div>
       <app-chat-input class="chat__input"></app-chat-input>
     </div>
@@ -35,12 +34,14 @@ const messages = store.getters.getMessagesByChatId(chatId);
 .scroll-container {
   position: relative;
   overflow: hidden;
+  height: 100%;
 }
 .chat {
   display: flex;
   flex-direction: column;
   background-color: $iceberg-blue;
   padding: 0 25px;
+  height: 100%;
 
   .chat__messages {
     flex-grow: 1;
