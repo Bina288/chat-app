@@ -4,7 +4,14 @@
     <div class="chat">
       <div class="chat__messages">
         <div class="chat__date">Сегодня</div>
-        <app-message></app-message>
+        <div>
+          <app-message
+            v-for="(message, index) in messages"
+            :key="message.id"
+            :message="message"
+            :messageIndex="index"
+          ></app-message>
+        </div>
       </div>
       <app-chat-input class="chat__input"></app-chat-input>
     </div>
@@ -15,8 +22,13 @@
 import AppMessage from "@/components/UI/AppMessage.vue";
 import AppChatInput from "./UI/AppMessageInput.vue";
 import { usePerfectScrollbar } from "@/composables/usePerfectScrollbar";
-
 const { scrollContainer } = usePerfectScrollbar();
+import { useStore } from "vuex";
+
+const store = useStore();
+const chatId = 1;
+console.log(store.getters);
+const messages = store.getters.getMessagesByChatId(chatId);
 </script>
 
 <style lang="scss" scoped>
@@ -46,15 +58,5 @@ const { scrollContainer } = usePerfectScrollbar();
     font-size: 14px;
     margin-bottom: 20px;
   }
-
-  // .chat__input {
-  //   display: flex;
-  //   padding-bottom: 20px;
-  //   justify-content: center;
-  //   position: sticky;
-  //   bottom: 0;
-  //   left: 0;
-  //   right: 0;
-  // }
 }
 </style>

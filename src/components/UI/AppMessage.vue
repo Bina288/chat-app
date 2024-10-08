@@ -1,85 +1,48 @@
 <template>
-  <div class="message message--sent">
+  <div
+    class="message"
+    :class="{
+      'message--sent': !isReceived,
+      'message--received': isReceived,
+    }"
+  >
     <div class="message__content">
-      <p class="message__text">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vehicula
-        ac nulla id egestas. Nulla eu sodales odio. Ut vitae eleifend est.
-        Integer molestie magna ex, sit amet maximus orci iaculis eu.
-      </p>
-      <time class="message__time" datetime="2024-09-27T16:14"
-        >16:14
+      <p class="message__text">{{ message.text }}</p>
+      <time class="message__time" :datetime="message.timestamp"
+        >{{ formattedTime }}
         <img
           class="message__received-mark-icon"
-          src="..\icons\mark-black-icon.svg"
+          :src="markStyle"
           alt="Received message Mark Icon"
-      /></time>
-    </div>
-  </div>
-  <div class="message message--received">
-    <div class="message__content">
-      <p class="message__text">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vehicula
-        ac nulla id egestas. Nulla eu sodales odio. Ut vitae eleifend est.
-        Integer molestie magna ex, sit amet maximus orci iaculis eu.
-      </p>
-      <time class="message__time" datetime="2024-09-27T17:14"
-        >17:14
-        <img
-          class="message__received-mark-icon"
-          src="..\icons\mark-black-icon.svg"
-          alt="Received message Mark Icon"
-      /></time>
-    </div>
-  </div>
-  <div class="message message--sent">
-    <div class="message__content">
-      <p class="message__text">Привет, все работает</p>
-      <time class="message__time" datetime="2024-09-27T18:16"
-        >18:16
-        <img
-          class="message__sent-mark-icon"
-          src="..\icons\mark-white-icon.svg"
-          alt="Send message Mark Icon"
-      /></time>
-    </div>
-  </div>
-  <div class="message message--sent">
-    <div class="message__content">
-      <p class="message__text">
-        Скопируй и перешли мне, пожалуйста: Lorem ipsum dolor sit amet,
-        consectetur adipiscing elit. Morbi vehicula ac nulla id egestas. Nulla
-        eu sodales odio. Ut vitae eleifend est. Integer molestie magna ex, sit
-        amet maximus orci iaculis eu.
-      </p>
-      <time class="message__time" datetime="2024-09-27T18:18"
-        >18:18
-        <img
-          class="message__sent-mark-icon"
-          src="..\icons\mark-white-icon.svg"
-          alt="Send message Mark Icon"
-      /></time>
-    </div>
-  </div>
-
-  <div class="message message--received">
-    <div class="message__content">
-      <p class="message__text">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vehicula
-        ac nulla id egestas. Nulla eu sodales odio. Ut vitae eleifend est.
-        Integer molestie magna ex, sit amet maximus orci iaculis eu.
-      </p>
-      <time class="message__time" datetime="2024-09-27T19:14"
-        >19:14
-        <img
-          class="message__received-mark-icon"
-          src="..\icons\mark-black-icon.svg"
-          alt="Received message Mark Icon"
-      /></time>
+        />
+      </time>
     </div>
   </div>
 </template>
 
 <script setup>
+import { defineProps, computed } from "vue";
+import { useFormatTime } from "@/composables/useFormatTime";
+
+const props = defineProps({
+  message: {
+    type: Object,
+    required: true,
+  },
+  messageIndex: {
+    type: Number,
+    required: true,
+  },
+});
+const { formatTime } = useFormatTime();
+
+const formattedTime = computed(() => formatTime(props.message.timestamp));
+const isReceived = computed(() => props.messageIndex % 2 === 0);
+const markStyle = computed(() =>
+  props.messageIndex % 2 === 0
+    ? new URL("@/components/icons/mark-black-icon.svg", import.meta.url).href
+    : new URL("@/components/icons/mark-white-icon.svg", import.meta.url).href
+);
 </script>
 
 <style lang="scss" scoped>
