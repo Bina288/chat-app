@@ -3,14 +3,12 @@
   <div class="scroll-container" ref="scrollContainer">
     <div class="chat">
       <div class="chat__messages">
-        <div class="chat__date">Сегодня</div>
-
-        <app-message
-          v-for="(message, index) in messages"
-          :key="message.id"
-          :message="message"
-          :messageIndex="index"
-        ></app-message>
+        <template v-for="(message, index) in messages" :key="message.id">
+          <div v-if="shouldDisplayDate(messages, index)" class="chat__date">
+            {{ getDateLabel(message) }}
+          </div>
+          <app-message :message="message" :messageIndex="index"></app-message>
+        </template>
       </div>
       <app-chat-input class="chat__input"></app-chat-input>
     </div>
@@ -28,20 +26,46 @@ const store = useStore();
 const chatId = 1;
 console.log(store.getters);
 const messages = store.getters.getMessagesByChatId(chatId);
+function shouldDisplayDate(messages, index) {
+  if (index === 0) return true;
+  const currentMessage = messages[index];
+  const previousMessage = messages[index - 1];
+
+  const currentDate = new Date(currentMessage.timestamp).toDateString();
+  const prevDate = new Date(previousMessage.timestamp).toDateString();
+
+  return currentDate !== prevDate;
+}
+
+function getDateLabel(message) {
+  const currentDate = new Date(message.timestamp);
+  const today = new Date();
+  const yesterday = new Date();
+  yesterday.setDate(today.getDate() - 1);
+
+  if (currentDate.toDateString() === today.toDateString()) {
+    return "Сегодня";
+  } else if (currentDate.toDateString() === yesterday.toDateString()) {
+    return "Вчера";
+  } else {
+    return currentDate.toLocaleDateString();
+  }
+}
 </script>
 
 <style lang="scss" scoped>
 .scroll-container {
   position: relative;
   overflow: hidden;
-  height: 100%;
+  height: 100hv;
 }
 .chat {
   display: flex;
   flex-direction: column;
   background-color: $iceberg-blue;
   padding: 0 25px;
-  height: 100%;
+  min-height: 100vh;
+  padding-top: 10px;
 
   .chat__messages {
     flex-grow: 1;
