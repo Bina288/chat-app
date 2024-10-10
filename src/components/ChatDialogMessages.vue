@@ -3,6 +3,9 @@
   <div class="scroll-container" ref="scrollContainer">
     <div class="chat">
       <div class="chat__messages">
+        <div v-if="messages.length < 1" class="chat__empty">
+          Сообщений пока нет
+        </div>
         <template v-for="(message, index) in messages" :key="message.id">
           <div v-if="shouldDisplayDate(messages, index)" class="chat__date">
             {{ getDateLabel(message) }}
@@ -23,7 +26,7 @@ const { scrollContainer } = usePerfectScrollbar();
 import { useStore } from "vuex";
 
 const store = useStore();
-const chatId = 1;
+const chatId = 3;
 console.log(store.getters);
 const messages = store.getters.getMessagesByChatId(chatId);
 function shouldDisplayDate(messages, index) {
@@ -82,6 +85,16 @@ function getDateLabel(message) {
     border-radius: 20px;
     font-size: 14px;
     margin-bottom: 20px;
+  }
+  .chat__empty {
+    align-self: center;
+
+    padding: 8px;
+    color: #f0f0f0;
+    background-color: rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
+    font-size: 14px;
+    margin-bottom: 80px;
   }
 }
 </style>
