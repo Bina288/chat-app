@@ -11,8 +11,13 @@
       class="input-container__input"
       type="text"
       placeholder="Напишите сообщение"
+      v-model="newMessage"
     />
-    <button class="input-container__send-btn">
+    <button
+      class="input-container__send-btn"
+      :disabled="!newMessage"
+      @click="sendMessage"
+    >
       <img
         class="input-container__send-msg-icon"
         src="..\icons\send-msg-icon.svg"
@@ -23,6 +28,24 @@
 </template>
 
 <script setup>
+import { ref } from "vue";
+import { useStore } from "vuex";
+
+const store = useStore();
+const newMessage = ref("");
+const chatId = 1;
+
+const sendMessage = () => {
+  console.log("send method", newMessage.value);
+  if (!newMessage.value) return;
+
+  store.commit("addMessage", {
+    chatId: chatId,
+    text: newMessage.value,
+  });
+
+  newMessage.value = "";
+};
 </script>
 
 <style lang="scss" scoped>
@@ -49,8 +72,16 @@
 .input-container__send-btn {
   border-radius: 0 10px 10px 0;
 }
+.input-container__send-btn {
+  border-radius: 0 10px 10px 0;
+}
 
 .input-container__emoji-btn {
   border-radius: 10px 0 0 10px;
+}
+
+.input-container__send-btn:disabled {
+  background-color: rgba(255, 255, 255, 0.7);
+  cursor: no-drop;
 }
 </style>

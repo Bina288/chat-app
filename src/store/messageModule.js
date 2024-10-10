@@ -16,20 +16,23 @@ export const messageModule={
     ]
 }),
 	mutations: {
-   
-    ADD_MESSAGE(state, { chatId, message }) {
-      const chat = state.chats.find(chat => chat.id === chatId);
-      if (chat) {
-        chat.messages.push(message);
-        chat.lastMessageTime = message.timestamp; // Обновляем время последнего сообщения
-      }
-    },
+  addMessage(state, message) {
+    console.log("add method",state, message);
+    const timestamp = new Date().getTime(); 
+    const newMsg = new Message(
+      timestamp, 
+      message.chatId,
+      message.text,
+      new Date().toISOString(), 
+      false
+  );
+    state.messages = [...state.messages, newMsg];
+    console.log("add method",state, message);
   },
+},
   actions: {
    
-    addMessage({ commit }, { chatId, message }) {
-      commit('ADD_MESSAGE', { chatId, message });
-    },
+ 
   },
 	 getters: {
    

@@ -24,11 +24,12 @@ import AppChatInput from "./UI/AppMessageInput.vue";
 import { usePerfectScrollbar } from "@/composables/usePerfectScrollbar";
 const { scrollContainer } = usePerfectScrollbar();
 import { useStore } from "vuex";
+import { ref, computed } from "vue";
 
 const store = useStore();
-const chatId = 3;
+const chatId = 1;
 console.log(store.getters);
-const messages = store.getters.getMessagesByChatId(chatId);
+const messages = computed(() => store.getters.getMessagesByChatId(chatId));
 function shouldDisplayDate(messages, index) {
   if (index === 0) return true;
   const currentMessage = messages[index];
@@ -88,7 +89,6 @@ function getDateLabel(message) {
   }
   .chat__empty {
     align-self: center;
-
     padding: 8px;
     color: #f0f0f0;
     background-color: rgba(0, 0, 0, 0.15);
