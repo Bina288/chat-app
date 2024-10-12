@@ -3,7 +3,7 @@
   <div class="scroll-container" ref="scrollContainer">
     <div class="chat">
       <div class="chat__messages">
-        <div v-if="messages.length < 1" class="chat__empty">
+        <div v-if="messages.length < 1 && chatId !== null" class="chat__empty">
           Сообщений пока нет
         </div>
         <template v-for="(message, index) in messages" :key="message.id">
