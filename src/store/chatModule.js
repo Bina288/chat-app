@@ -5,8 +5,9 @@ const store = useStore();
 export const chatModule = {
 	state: () => ({
     currentChatId: null,
+     //constructor(id, name, lastVisited = '', avatar = '') 
 		chats: [ 
-      new Chat(0, 'Чат 1'),
+      new Chat(0, 'Чат 1', 'пять минут назад'),
       new Chat(1, 'Чат 2'),
       new Chat(2, 'Чат 3'),
       new Chat(3, 'Чат 4'),
@@ -37,7 +38,10 @@ export const chatModule = {
     },    
     getCurrentChatId: (state) => {
       return state.currentChatId;
-    },
+    },   
+    getChatByChatId: (state) => (chatId) => {
+      return state.chats.find(chat => chat.id === chatId);
+  },
     
   }
 }

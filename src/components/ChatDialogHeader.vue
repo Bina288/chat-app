@@ -3,8 +3,8 @@
     <div class="chat-header__info">
       <div class="chat-avatar avatar"></div>
       <div class="chat-header__text-info">
-        <h4 class="chat-header__chat-name">Чат 1</h4>
-        <p class="chat-header__last-visit grey-text">в сети 5 мин назад</p>
+        <h4 class="chat-header__chat-name">{{ chat.name }}</h4>
+        <p class="chat-header__last-visit grey-text">{{ lastVisit }}</p>
       </div>
     </div>
     <div class="chat-actions">
@@ -34,6 +34,13 @@
 </template>
 
 <script setup>
+import { useStore } from "vuex";
+import { computed } from "vue";
+const store = useStore();
+const chatId = computed(() => store.getters.getCurrentChatId);
+console.log("chatId", chatId);
+const chat = computed(() => store.getters.getChatByChatId(chatId.value));
+const lastVisit = computed(() => "в сети " + chat.value.lastVisited);
 </script>
 
 <style lang="scss" scoped>

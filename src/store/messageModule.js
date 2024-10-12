@@ -17,7 +17,6 @@ export const messageModule={
 }),
 	mutations: {
   addMessage(state, message) {
-    console.log("add method",state, message);
     const timestamp = new Date().getTime(); 
     const newMsg = new Message(
       timestamp, 
@@ -34,7 +33,6 @@ export const messageModule={
         msg.hasRead = true;
         }
       });
-      console.log('mutations', state.messages)
     },
 },
   
@@ -42,7 +40,6 @@ export const messageModule={
   actions: {
     markMessagesAsRead({ commit }, chatId) {
       commit('markMessagesAsRead', chatId);
-      console.log('actions', chatId)
     }
   },
 	 getters: {   

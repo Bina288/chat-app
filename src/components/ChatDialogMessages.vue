@@ -13,7 +13,10 @@
           <app-message :message="message" :messageIndex="index"></app-message>
         </template>
       </div>
-      <app-chat-input class="chat__input"></app-chat-input>
+      <app-chat-input
+        v-if="chatId !== null"
+        class="chat__input"
+      ></app-chat-input>
     </div>
   </div>
 </template>
