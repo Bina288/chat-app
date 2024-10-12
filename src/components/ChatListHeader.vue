@@ -50,7 +50,7 @@ const props = defineProps({
 
   .search-btn {
     border-radius: 20px 0 0 20px;
-    background-color: $light-gray;
+    background-color: $light-grey;
     padding: 10px;
     border: none;
     display: flex;
@@ -59,8 +59,8 @@ const props = defineProps({
 
   .search-input {
     border-radius: 0 20px 20px 0;
-    border: 1px solid $light-gray;
-    background-color: $light-gray;
+    border: 1px solid $light-grey;
+    background-color: $light-grey;
     padding: 10px;
     width: 100%;
   }

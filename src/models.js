@@ -10,9 +10,10 @@ export class Message {
 }
 
 export class Chat {
-  constructor(id, name, lastVisited = '') {
+  constructor(id, name, avatar = '', lastVisited = '') {
     this.id = id,
     this.name = name;
+    this.avatar = avatar;
     this.lastVisited = lastVisited;
   }
 }

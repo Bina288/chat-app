@@ -8,7 +8,7 @@
         </div>
         <template v-for="(message, index) in messages" :key="message.id">
           <div v-if="shouldDisplayDate(messages, index)" class="chat__date">
-            {{ getDateLabel(message) }}
+            {{ getDateLabel(message.timestamp) }}
           </div>
           <app-message :message="message" :messageIndex="index"></app-message>
         </template>
@@ -22,39 +22,18 @@
 import AppMessage from "@/components/UI/AppMessage.vue";
 import AppChatInput from "./UI/AppMessageInput.vue";
 import { usePerfectScrollbar } from "@/composables/usePerfectScrollbar";
-const { scrollContainer } = usePerfectScrollbar();
 import { useStore } from "vuex";
-import { ref, computed } from "vue";
+import { computed } from "vue";
+
+import { useFormatDate } from "@/composables/useFormatDate";
+const { shouldDisplayDate, getDateLabel } = useFormatDate();
+const { scrollContainer } = usePerfectScrollbar();
 
 const store = useStore();
-const chatId = 1;
-console.log(store.getters);
-const messages = computed(() => store.getters.getMessagesByChatId(chatId));
-function shouldDisplayDate(messages, index) {
-  if (index === 0) return true;
-  const currentMessage = messages[index];
-  const previousMessage = messages[index - 1];
-
-  const currentDate = new Date(currentMessage.timestamp).toDateString();
-  const prevDate = new Date(previousMessage.timestamp).toDateString();
-
-  return currentDate !== prevDate;
-}
-
-function getDateLabel(message) {
-  const currentDate = new Date(message.timestamp);
-  const today = new Date();
-  const yesterday = new Date();
-  yesterday.setDate(today.getDate() - 1);
-
-  if (currentDate.toDateString() === today.toDateString()) {
-    return "Сегодня";
-  } else if (currentDate.toDateString() === yesterday.toDateString()) {
-    return "Вчера";
-  } else {
-    return currentDate.toLocaleDateString();
-  }
-}
+const chatId = computed(() => store.getters.getCurrentChat);
+const messages = computed(() =>
+  store.getters.getMessagesByChatId(chatId.value)
+);
 </script>
 
 <style lang="scss" scoped>

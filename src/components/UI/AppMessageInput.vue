@@ -28,19 +28,18 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { useStore } from "vuex";
 
 const store = useStore();
 const newMessage = ref("");
-const chatId = 1;
+const chatId = computed(() => store.getters.getCurrentChat);
 
 const sendMessage = () => {
-  console.log("send method", newMessage.value);
   if (!newMessage.value) return;
 
   store.commit("addMessage", {
-    chatId: chatId,
+    chatId: chatId.value,
     text: newMessage.value,
   });
 
