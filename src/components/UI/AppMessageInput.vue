@@ -33,7 +33,7 @@ import { useStore } from "vuex";
 
 const store = useStore();
 const newMessage = ref("");
-const chatId = computed(() => store.getters.getCurrentChat);
+const chatId = computed(() => store.getters.getCurrentChatId);
 
 const sendMessage = () => {
   if (!newMessage.value) return;

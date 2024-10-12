@@ -35,8 +35,9 @@ export const chatModule = {
     getAllChats: (state) => {
       return state.chats
     },    
-    getCurrentChat: (state) => {
+    getCurrentChatId: (state) => {
       return state.currentChatId;
     },
+    
   }
 }

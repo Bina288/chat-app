@@ -59,11 +59,10 @@ const formattedTime = computed(() => formatTime(lastMessage.value.timestamp));
 const formattedDate = computed(() => getDateLabel(lastMessage.value.timestamp));
 
 const unreadCount = computed(() => {
-  console.log("computed");
   return messages.value.filter((message) => !message.hasRead).length;
 });
 
-const currentChatId = computed(() => store.getters.getCurrentChat);
+const currentChatId = computed(() => store.getters.getCurrentChatId);
 const isCurrentChat = computed(() => chatId === currentChatId.value);
 
 function getDateOrTimeLabel(timestamp) {

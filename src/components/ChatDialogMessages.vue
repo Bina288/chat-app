@@ -30,7 +30,7 @@ const { shouldDisplayDate, getDateLabel } = useFormatDate();
 const { scrollContainer } = usePerfectScrollbar();
 
 const store = useStore();
-const chatId = computed(() => store.getters.getCurrentChat);
+const chatId = computed(() => store.getters.getCurrentChatId);
 const messages = computed(() =>
   store.getters.getMessagesByChatId(chatId.value)
 );
