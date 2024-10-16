@@ -8,13 +8,9 @@
       </div>
     </div>
     <div class="chat-actions">
-      <button>
-        <img
-          class="search-icon icon"
-          src=".\icons\search-icon.svg"
-          alt="Search Icon"
-        />
-      </button>
+      <div class="search">
+        <dialog-search-form></dialog-search-form>
+      </div>
       <button>
         <img
           class="call-icon icon"
@@ -36,9 +32,9 @@
 <script setup>
 import { useStore } from "vuex";
 import { computed } from "vue";
+import DialogSearchForm from "./DialogSearchForm.vue";
 const store = useStore();
 const chatId = computed(() => store.getters.getCurrentChatId);
-console.log("chatId", chatId);
 const chat = computed(() => store.getters.getChatByChatId(chatId.value));
 const lastVisit = computed(() => "в сети " + chat.value.lastVisited);
 </script>
@@ -65,10 +61,16 @@ const lastVisit = computed(() => "в сети " + chat.value.lastVisited);
       }
     }
   }
+
   .chat-actions {
     display: flex;
     gap: 15px;
     margin-right: 25px;
+
+    .search {
+      position: relative;
+      padding-top: 5px;
+    }
   }
 }
 </style>

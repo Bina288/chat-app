@@ -19,6 +19,7 @@ const chats = computed(() => store.getters.getAllChats);
 
 const selectChat = (chatId) => {
   store.dispatch("changeCurrentChat", chatId);
+  store.dispatch("resetSearchResults");
 };
 </script>
 

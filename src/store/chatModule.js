@@ -11,6 +11,12 @@ export const chatModule = {
       new Chat(1, 'Чат 2'),
       new Chat(2, 'Чат 3'),
       new Chat(3, 'Чат 4'),
+      new Chat(4, 'Чат 5', 'пять минут назад'),
+      new Chat(5, 'Чат 6'),
+      new Chat(6, 'Чат 7'),
+      new Chat(7, 'Чат 8'),
+      new Chat(8, 'Чат 9', 'пять минут назад'),
+      new Chat(9, 'Чат 10'),
 ],   
 	}),
 	mutations: {
@@ -27,8 +33,11 @@ export const chatModule = {
     },    
      changeCurrentChat({ commit }, chatId) {
       commit('setCurrentChatId', chatId);
-      commit('markMessagesAsRead', chatId);
-     
+      commit('markMessagesAsRead', chatId);     
+    },
+
+     resetCurrentChat({ commit }) {
+      commit('setCurrentChatId', null);    
     },
     
   },

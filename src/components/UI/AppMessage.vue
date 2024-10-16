@@ -7,6 +7,7 @@
     }"
   >
     <div class="message__content">
+      <p class="message__chat-name" v-if="chatId === null">{{ chat.name }}:</p>
       <p class="message__text">{{ message.text }}</p>
       <time class="message__time" :datetime="message.timestamp"
         >{{ formattedTime }}
@@ -23,6 +24,9 @@
 <script setup>
 import { defineProps, computed } from "vue";
 import { useFormatTime } from "@/composables/useFormatTime";
+import { useStore } from "vuex";
+
+const store = useStore();
 
 const props = defineProps({
   message: {
@@ -42,6 +46,10 @@ const markStyle = computed(() =>
   props.messageIndex % 2 === 0
     ? new URL("@/components/icons/mark-black-icon.svg", import.meta.url).href
     : new URL("@/components/icons/mark-white-icon.svg", import.meta.url).href
+);
+const chatId = computed(() => store.getters.getCurrentChatId);
+const chat = computed(() =>
+  store.getters.getChatByChatId(props.message.chatId)
 );
 </script>
 
@@ -70,6 +78,9 @@ $margin-bottom: 20px;
   max-width: $max-width;
   font-size: $text-font-size;
   display: inline-block;
+}
+.message__chat-name {
+  font-weight: 600;
 }
 
 .message--sent {
