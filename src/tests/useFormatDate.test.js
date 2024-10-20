@@ -32,18 +32,18 @@ describe('useFormatDate', () => {
   });
 
   test('should return "Today" if the message is from today', () => {
-    const timestamp = new Date().getTime(); // Today
+    const timestamp = new Date().getTime(); 
     expect(getDateLabel(timestamp)).toBe('Сегодня');
   });
 
   test('should return "Yesterday" if the message is from yesterday', () => {
     const timestamp = new Date();
-    timestamp.setDate(timestamp.getDate() - 1); // Yesterday
+    timestamp.setDate(timestamp.getDate() - 1); 
     expect(getDateLabel(timestamp.getTime())).toBe('Вчера');
   });
 
   test('should return formatted date if the message is older than yesterday', () => {
-    const timestamp = new Date('2024-09-01').getTime(); // Arbitrary date
+    const timestamp = new Date('2024-09-01').getTime();
     expect(getDateLabel(timestamp)).toBe(new Date('2024-09-01').toLocaleDateString());
   });
 });

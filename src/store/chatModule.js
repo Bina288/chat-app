@@ -1,7 +1,5 @@
 import { Chat } from '@/models'
-import { useStore } from "vuex";
 
-const store = useStore();
 export const chatModule = {
 	state: () => ({
     currentChatId: null,
@@ -20,17 +18,11 @@ export const chatModule = {
 ],   
 	}),
 	mutations: {
-    ADD_CHAT(state, chat) {
-      state.chats.push(chat);
-    },   
     setCurrentChatId(state, chatId) {
       state.currentChatId = chatId;
     },
   },
   actions: {
-    addChat({ commit }, chat) {
-      commit('ADD_CHAT', chat);
-    },    
      changeCurrentChat({ commit }, chatId) {
       commit('setCurrentChatId', chatId);
       commit('markMessagesAsRead', chatId);     

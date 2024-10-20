@@ -15,6 +15,7 @@
 	import { computed, ref, watch } from 'vue'
 	import AppSearchButton from './UI/AppSearchButton.vue'
 	import { useSearch } from '@/composables/useSearch'
+
 	const { executeSearch } = useSearch()
 	const store = useStore()
 	const chatId = computed(() => store.getters.getCurrentChatId)
@@ -22,6 +23,7 @@
 	const isSearchActive = ref(false)
 
 	watch(isSearchActive, (newVal) => {
+		//to animate the input's opening
 		if (!newVal) {
 			query.value = ''
 		}

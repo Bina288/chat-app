@@ -11,9 +11,6 @@ export const messageModule = {
       new Message(4, 1, 'Не забудь отправить отчет', '2024-09-28T19:20', true),
       new Message(5, 1, 'Уже отправил', '2024-09-28T19:25', false),
 
-      /*new Message(6, 2, 'Сообщение в третьем чате', '2024-09-29T13:14', true),
-      new Message(7, 2, 'Здесь всё готово', '2024-09-29T13:30', true),*/
-
       new Message(8, 3, 'Начнем завтра с утра?', '2024-09-30T10:00', true),
       new Message(9, 3, 'Отлично, буду на месте в 9', '2024-09-30T10:05', true),
 
@@ -48,6 +45,7 @@ export const messageModule = {
     );
       state.messages = [...state.messages, newMsg];
     },
+
     markMessagesAsRead(state, chatId) {
       state.messages.forEach((msg) => {
         if (msg.chatId === chatId) {
@@ -63,11 +61,11 @@ export const messageModule = {
     },    
   },
 
-	getters: {   
+	getters: {       
     getMessagesByChatId: (state) => (chatId) => {
-      // console.log('in getter messages filter', state.messages.filter(message => message.chatId === chatId))
       return state.messages.filter(message => message.chatId === chatId);
     },   
+
     getAllMessages: (state) =>  {
       return state.messages;
     },   

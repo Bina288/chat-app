@@ -1,9 +1,8 @@
-import { useStore } from "vuex";
-
 export const searchModule = {
   state: () => ({		   
     searchResults: null,  
   }),
+
 	mutations: { 
     setSearchResults(state, results) {
       console.log('4, setSearchResults', results)
@@ -12,7 +11,7 @@ export const searchModule = {
 },  
 
   actions: {     
-    searchMessages({ state, commit, rootState }, { query, chatId }) {   
+    searchMessages({ commit, rootState }, { query, chatId }) {   
       const searchQuery = query.trim().toLowerCase(); 
       if (!searchQuery) {
         commit('setSearchResults', []); 
