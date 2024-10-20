@@ -12,6 +12,7 @@ export function usePerfectScrollbar() {
         wheelSpeed: 2,
         wheelPropagation: true,
         minScrollbarLength: 20,
+        suppressScrollX: true,
       });
     }
   };

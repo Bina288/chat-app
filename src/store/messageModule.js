@@ -65,7 +65,7 @@ export const messageModule = {
 
 	getters: {   
     getMessagesByChatId: (state) => (chatId) => {
-      console.log('in getter messages filter', state.messages.filter(message => message.chatId === chatId))
+      // console.log('in getter messages filter', state.messages.filter(message => message.chatId === chatId))
       return state.messages.filter(message => message.chatId === chatId);
     },   
     getAllMessages: (state) =>  {

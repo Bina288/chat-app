@@ -1,6 +1,5 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue';
-
-export function useListToggle(minChatWidthPx = 75, maxChatWidthPercent = 60) {
+export function useListToggle(minChatWidthPx = 75, maxChatWidthPercent = 200) {
   const isCollapsed = ref(false);
   let startX = 0;
 
@@ -14,12 +13,11 @@ export function useListToggle(minChatWidthPx = 75, maxChatWidthPercent = 60) {
     }
   });
 
-  const onMouseDown = (event) => {
+  const onMouseDown = (event) => {    
     startX = event.clientX;
     const currentWidthPx = isCollapsed.value
       ? minChatWidthPx
       : (maxChatWidthPercent / 100) * window.innerWidth;
-
     if (event.clientX < currentWidthPx + 20) {
       document.addEventListener('mousemove', onMouseMove);
       document.addEventListener('mouseup', onMouseUp);
@@ -28,8 +26,8 @@ export function useListToggle(minChatWidthPx = 75, maxChatWidthPercent = 60) {
   };
 
   const onMouseMove = (event) => {
+    
     const deltaX = event.clientX - startX;
-
     if (deltaX < -30 && !isCollapsed.value) {
       isCollapsed.value = true;
     } else if (deltaX > 30 && isCollapsed.value) {
@@ -44,17 +42,19 @@ export function useListToggle(minChatWidthPx = 75, maxChatWidthPercent = 60) {
   };
 
   const onTouchStart = (event) => {
+    console.log("onTouchStart")
     const touch = event.touches[0];
     startX = touch.clientX;
   };
 
   const onTouchMove = (event) => {
+    
     const touch = event.touches[0];
     const deltaX = touch.clientX - startX;
 
-    if (deltaX < -50 && !isCollapsed.value) {
+    if (deltaX < -20 && !isCollapsed.value) {
       isCollapsed.value = true;
-    } else if (deltaX > 50 && isCollapsed.value) {
+    } else if (deltaX > 20 && isCollapsed.value) {
       isCollapsed.value = false;
     }
   };
